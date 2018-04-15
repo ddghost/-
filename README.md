@@ -1,5 +1,4 @@
 # 自学报告
-## 丢一个github链接https://github.com/ddghost/gridworld-exercise 
 ## vi编辑器的使用
 ### vi编辑器主要分为三种模式：
 > * 命令行模式
@@ -34,6 +33,7 @@ vi helloworld.java
 
 ## Ant的使用
 ### Ant感觉像是大一实训时用的makefile,编写一个build.xml,例如下面例子，选自教程
+
 ```
 <?xml version="1.0"?>
 <project name="helloWorld">
