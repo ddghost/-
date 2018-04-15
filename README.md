@@ -35,6 +35,61 @@ vi helloworld.java
 ~~（感觉还是sublime更好→_→）~~
 ## Java学习报告
 ### java与c最大的不同就是java是完全面向对象的语言，因此它没有一个单独的main函数，而是在类中有一个静态的main函数，不过除此之外，java很多语法什么的都和c很相似，什么String，int，double类型都是差不多的，也没了指针，因此学起来并不算太难。不过这次主要学的是java的Gui，感觉还是很简陋的，位置布局什么的相比于html css的web应用，还有C#的uwp应用来讲都很弱。
+```
+private JTextField firstNum = new JTextField("1" );
+private JTextField secondNum = new JTextField("1");
+private JLabel signArea = new JLabel("+" , JLabel.CENTER);
+private JLabel equalArea = new JLabel("=" , JLabel.CENTER);
+private JLabel answerArea = new JLabel("" , JLabel.CENTER);
+private JButton buttonAdd = new JButton("+");
+private JButton buttonSubtraction = new JButton("-");
+private JButton buttonMultiply = new JButton("*");
+private JButton buttonDivide = new JButton("/");
+private JButton buttonResult = new JButton("Ok");
+
+JFrame frame = new JFrame("Easy Calculator");
+			frame.setBounds(framePositionOfX, framePositionOfY, frameWidth, frameHeight);
+			// 更改默认布局管理器为GridLayout
+			frame.setLayout(new GridLayout(frameRow, frameCol, jiange , jiange));
+			
+			frame.add(firstNum);
+			frame.add(signArea);
+			frame.add(secondNum);
+
+			frame.add(equalArea);
+			frame.add(answerArea);
+			ActionListener operationLitener = new ActionListener(){
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						signArea.setText(((JButton)e.getSource()).getText() );
+					}           
+			};
+			buttonAdd.addActionListener(operationLitener);
+private class EqualOperation implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			double firstNumber = Double.parseDouble(firstNum.getText() ) ;
+			double secondNumer = Double.parseDouble(secondNum.getText() ) ;
+			double result = 0.0 ;
+			switch(signArea.getText().charAt(0)){
+			case '+': 
+				result = firstNumber + secondNumer ;  
+				break;
+			case '-': 
+				result = firstNumber - secondNumer ; 
+			 	break;
+			case '*': 
+				result = firstNumber * secondNumer ;  
+				break;
+			case '/': 
+				result = firstNumber / secondNumer ;  
+				break;
+			default: 				    					break;							
+			}
+			answerArea.setText(String.valueOf(result));
+		}                   
+	};
+```
 
 ## Ant的使用
 ### Ant感觉像是大一实训时用的makefile,编写一个build.xml,例如下面例子，选自教程
@@ -74,6 +129,7 @@ vi helloworld.java
 		</java>
 	</target>
 </project>
+
 ```
 ## Junit的使用
 @Test：测试方法
