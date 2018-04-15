@@ -40,6 +40,7 @@ vi helloworld.java
 ```
 JFrame frame = new JFrame("Easy Calculator");
 frame.setBounds(framePositionOfX, framePositionOfY, frameWidth, frameHeight);
+frame.setVisible(true);
 ```
 这三行代码第一行先新建一个窗口gui，第二行设置窗口出现的位置和大小，第三行将它显示出来
 
