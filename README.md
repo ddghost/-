@@ -1,4 +1,5 @@
 # 自学报告
+## 丢一个github链接https://github.com/ddghost/gridworld-exercise 
 ## vi编辑器的使用
 ### vi编辑器主要分为三种模式：
 > * 命令行模式
@@ -48,6 +49,7 @@ vi helloworld.java
 >   target元素：代表要执行的任务
 >   * name元素: target的名字
 >   * depends: 描述依赖关系
+
 ### 以下是计算器的build代码
 ```
 <?xml version="1.0"?>
@@ -109,7 +111,7 @@ javac -classpath .:junit-4.9.jar HelloWorldTest.java
 java -classpath .:junit-4.9.jar -ea org.junit.runner.JUnitCore  HelloWorldTest 
 ```
 
-## sonor
+## sonor学习
 ### 新建一个文本sonar-project.properties，按照教程写了下列的代码，其中projectKey，projectName，java-module.sonar.projectBaseDir改为calculator。
 ```
 #required metadata
