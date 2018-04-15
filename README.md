@@ -33,6 +33,8 @@ vi helloworld.java
 >   * q 退出vi编辑器
 >   * qw 退出并保存。
 ~~（感觉还是sublime更好→_→）~~
+## Java学习报告
+### java与c最大的不同就是java是完全面向对象的语言，因此它没有一个单独的main函数，而是在类中有一个静态的main函数，不过除此之外，java很多语法什么的都和c很相似，什么String，int，double类型都是差不多的，也没了指针，因此学起来并不算太难。不过这次主要学的是java的Gui，感觉还是很简陋的，位置布局什么的相比于html css的web应用，还有C#的uwp应用来讲都很弱。
 
 ## Ant的使用
 ### Ant感觉像是大一实训时用的makefile,编写一个build.xml,例如下面例子，选自教程
