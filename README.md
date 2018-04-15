@@ -35,61 +35,55 @@ vi helloworld.java
 ~~（感觉还是sublime更好→_→）~~
 ## Java学习报告
 ### java与c最大的不同就是java是完全面向对象的语言，因此它没有一个单独的main函数，而是在类中有一个静态的main函数，不过除此之外，java很多语法什么的都和c很相似，什么String，int，double类型都是差不多的，也没了指针，因此学起来并不算太难。不过这次主要学的是java的Gui，感觉还是很简陋的，位置布局什么的相比于html css的web应用，还有C#的uwp应用来讲都很弱。
+### 对于java的GUI，主要学习了这些
+
+```
+JFrame frame = new JFrame("Easy Calculator");
+frame.setBounds(framePositionOfX, framePositionOfY, frameWidth, frameHeight);
+```
+这三行代码第一行先新建一个窗口gui，第二行设置窗口出现的位置和大小，第三行将它显示出来
+
 ```
 private JTextField firstNum = new JTextField("1" );
-private JTextField secondNum = new JTextField("1");
-private JLabel signArea = new JLabel("+" , JLabel.CENTER);
-private JLabel equalArea = new JLabel("=" , JLabel.CENTER);
-private JLabel answerArea = new JLabel("" , JLabel.CENTER);
-private JButton buttonAdd = new JButton("+");
-private JButton buttonSubtraction = new JButton("-");
-private JButton buttonMultiply = new JButton("*");
-private JButton buttonDivide = new JButton("/");
-private JButton buttonResult = new JButton("Ok");
-
-JFrame frame = new JFrame("Easy Calculator");
-			frame.setBounds(framePositionOfX, framePositionOfY, frameWidth, frameHeight);
-			// 更改默认布局管理器为GridLayout
-			frame.setLayout(new GridLayout(frameRow, frameCol, jiange , jiange));
-			
-			frame.add(firstNum);
-			frame.add(signArea);
-			frame.add(secondNum);
-
-			frame.add(equalArea);
-			frame.add(answerArea);
-			ActionListener operationLitener = new ActionListener(){
-					@Override
-					public void actionPerformed(ActionEvent e) {
-						signArea.setText(((JButton)e.getSource()).getText() );
-					}           
-			};
-			buttonAdd.addActionListener(operationLitener);
-private class EqualOperation implements ActionListener {
-		@Override
-		public void actionPerformed(ActionEvent arg0) {
-			double firstNumber = Double.parseDouble(firstNum.getText() ) ;
-			double secondNumer = Double.parseDouble(secondNum.getText() ) ;
-			double result = 0.0 ;
-			switch(signArea.getText().charAt(0)){
-			case '+': 
-				result = firstNumber + secondNumer ;  
-				break;
-			case '-': 
-				result = firstNumber - secondNumer ; 
-			 	break;
-			case '*': 
-				result = firstNumber * secondNumer ;  
-				break;
-			case '/': 
-				result = firstNumber / secondNumer ;  
-				break;
-			default: 				    					break;							
-			}
-			answerArea.setText(String.valueOf(result));
-		}                   
-	};
+frame.add(firstNum);
 ```
+第一行代码新建一个文本区域，第二行代码将它添加到了窗口中，除了JTextField外，还有很多样式，例如JButton，JLabel等等，按需查找资料了解它们，然后加入即可。
+
+这些组件都有一些方法，在设置按钮点击函数的时候采用了一些简单的，例如setText（），getText（）等等。
+下面就是添加点击函数的方法，先定义一个监听器类（继承ActionListener）,这个类主要要实现一个actionPerformed的函数，这个函数就是按钮点击后执行的函数，其中语法开始也没怎么查，基本按照c++的写法来写，几乎没有什么不同。当然，不同点还是有的，例如实现这个函数接口的话前面要加一个@Override，而c++根本不需要加，还有就是String类居然没有重载中括号，只能用其中的方法charAt（），让我很是不习惯。
+```
+private class EqualOperation implements ActionListener {
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		double firstNumber = Double.parseDouble(firstNum.getText() ) ;
+		double secondNumer = Double.parseDouble(secondNum.getText() ) ;
+		double result = 0.0 ;
+		switch(signArea.getText().charAt(0)){
+		case '+': 
+			result = firstNumber + secondNumer ;  
+			break;
+		case '-': 
+			result = firstNumber - secondNumer ; 
+			break;
+		case '*': 
+			result = firstNumber * secondNumer ;  
+			break;
+		case '/': 
+			result = firstNumber / secondNumer ;  
+			break;
+		default: 				    					break;							
+		}
+		answerArea.setText(String.valueOf(result));
+	}                   
+};
+```
+------------
+写完这个类之后，要想添加到按钮中，就只要写这行代码，就可以实现对按钮的点击监听
+```
+buttonAdd.addActionListener(new equalOperation() );
+```
+掌握了这些，写一个简单计算器就不是什么难事了。
+
 
 ## Ant的使用
 ### Ant感觉像是大一实训时用的makefile,编写一个build.xml,例如下面例子，选自教程
